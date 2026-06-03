@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New National Marble — Premium Stone & Tiles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8975A;
+    --gold-light: #D4B57A;
+    --gold-dark: #8B6B35;
+    --stone: #F5F2EE;
+    --stone-dark: #E8E3DC;
+    --charcoal: #1C1C1A;
+    --charcoal-mid: #3A3835;
+    --warm-gray: #6B6560;
+    --white: #FDFCFB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--charcoal); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,252,251,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--stone-dark);
+    padding: 0 4rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--warm-gray); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--charcoal); color: var(--white); padding: 0.5rem 1.4rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold); }
+
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-mid) 60%, #2a2520 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 64px;
+  }
+  .hero-texture { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(184,151,90,0.03) 40px, rgba(184,151,90,0.03) 80px), repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 80px); }
+  .hero-strip { position: absolute; bottom: 0; left: 0; right: 0; height: 220px; display: flex; overflow: hidden; opacity: 0.32; }
+  .hero-strip img { flex-shrink: 0; width: 20%; object-fit: cover; }
+  .hero-strip-fade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(28,28,26,1) 0%, rgba(28,28,26,0) 60%); }
+  .hero-content { text-align: center; position: relative; z-index: 2; max-width: 800px; padding: 2rem; animation: fadeUp 1s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge { display: inline-block; border: 1px solid rgba(184,151,90,0.5); color: var(--gold-light); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.4rem 1.2rem; margin-bottom: 2rem; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 0.3rem; animation: fadeUp 1s 0.15s ease both; }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-tagline { font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 2rem; animation: fadeUp 1s 0.3s ease both; }
+  .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 520px; margin: 0 auto 3rem; animation: fadeUp 1s 0.45s ease both; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s 0.6s ease both; }
+  .btn-primary { background: var(--gold); color: var(--charcoal); padding: 0.85rem 2.5rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--white); padding: 0.85rem 2.5rem; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; gap: 4rem; animation: fadeUp 1s 0.75s ease both; z-index: 3; }
+  .hero-stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold-light); display: block; }
+  .hero-stat .lbl { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+  section { padding: 6rem 4rem; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--charcoal); }
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .products { background: var(--stone); }
+  .products-header { text-align: center; margin-bottom: 3rem; }
+
+  .tab-bar { display: flex; justify-content: center; margin-bottom: 3rem; }
+  .tab-btn { padding: 0.8rem 2.5rem; border: 1px solid var(--stone-dark); background: var(--white); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); transition: all 0.2s; }
+  .tab-btn:first-child { border-right: none; }
+  .tab-btn.active { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+  .tab-btn:hover:not(.active) { background: var(--stone-dark); }
+
+  .category-section { display: none; }
+  .category-section.active { display: block; }
+  .cat-label { text-align: center; margin-bottom: 2rem; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-gray); }
+  .cat-label span { color: var(--gold); font-weight: 500; }
+
+  .floor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .floor-card { background: var(--white); overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .floor-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+  .floor-card .img-wrap { overflow: hidden; height: 220px; }
+  .floor-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .floor-card:hover .img-wrap img { transform: scale(1.05); }
+  .floor-info { padding: 1.1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .floor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--charcoal); }
+  .floor-size { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); margin-top: 0.15rem; }
+  .tile-badge { background: var(--gold); color: var(--charcoal); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.7rem; white-space: nowrap; flex-shrink: 0; }
+  .tile-badge.dark { background: var(--charcoal); color: var(--white); }
+
+  .wall-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .wall-card { background: var(--white); overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .wall-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+  .wall-card .img-wrap { overflow: hidden; height: 260px; }
+  .wall-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .wall-card:hover .img-wrap img { transform: scale(1.05); }
+  .wall-info { padding: 0.9rem 1rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .wall-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+  .wall-code { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-gray); margin-top: 0.15rem; }
+
+  .enquire-strip { text-align: center; margin-top: 3rem; padding: 2rem; background: var(--white); border: 1px solid var(--stone-dark); max-width: 1200px; margin: 3rem auto 0; }
+  .enquire-strip p { font-size: 0.85rem; color: var(--warm-gray); margin-bottom: 1.2rem; }
+
+  .calculator { background: var(--white); }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto; align-items: start; }
+  .calc-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); }
+  .form-select { padding: 0.75rem 1rem; border: 1px solid var(--stone-dark); background: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--charcoal); outline: none; transition: border-color 0.2s; -webkit-appearance: none; border-radius: 0; }
+  .form-select:focus { border-color: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .range-row { display: flex; align-items: center; gap: 1rem; }
+  input[type=range] { flex: 1; -webkit-appearance: none; height: 2px; background: var(--stone-dark); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); cursor: pointer; }
+  .range-val { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold-dark); min-width: 70px; text-align: right; }
+  .quote-result { background: var(--charcoal); padding: 2.5rem; color: var(--white); position: sticky; top: 80px; }
+  .quote-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; color: var(--gold-light); }
+  .quote-line { display: flex; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; }
+  .quote-line .lbl { color: rgba(255,255,255,0.5); }
+  .quote-total { display: flex; justify-content: space-between; padding-top: 1.5rem; }
+  .quote-total .lbl { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .quote-total .val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold-light); }
+  .quote-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 1.5rem; line-height: 1.6; }
+  .btn-quote { width: 100%; margin-top: 2rem; padding: 1rem; background: var(--gold); color: var(--charcoal); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .btn-quote:hover { background: var(--gold-light); }
+
+  .why { background: var(--stone); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 1100px; margin: 3rem auto 0; }
+  .why-card { padding: 2rem; background: var(--white); }
+  .why-icon { width: 44px; height: 44px; background: var(--charcoal); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .why-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-light); stroke-width: 1.5; }
+  .why-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .why-desc { font-size: 0.85rem; color: var(--warm-gray); line-height: 1.7; }
+
+  .contact { background: var(--charcoal); color: var(--white); }
+  .contact-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .contact .section-title { color: var(--white); }
+  .contact-desc { color: rgba(255,255,255,0.55); margin-top: 1rem; font-size: 0.9rem; line-height: 1.7; }
+  .contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-item-icon { width: 36px; height: 36px; border: 1px solid rgba(184,151,90,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-item-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--gold); stroke-width: 1.5; }
+  .contact-item-text { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .contact-item-text strong { color: var(--white); font-weight: 500; display: block; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-input { padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
+  .contact-input::placeholder { color: rgba(255,255,255,0.3); }
+  .contact-input:focus { border-color: var(--gold); }
+  textarea.contact-input { min-height: 120px; resize: vertical; }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.82); align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--white); max-width: 540px; width: 92%; position: relative; animation: fadeUp 0.3s ease; overflow: hidden; max-height: 90vh; overflow-y: auto; }
+  .modal-close { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.55); border: none; cursor: pointer; color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; z-index: 2; }
+  .modal-img { width: 100%; height: 260px; object-fit: cover; display: block; }
+  .modal-body { padding: 1.75rem; }
+  .modal-code { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+  .modal-name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 1.25rem; }
+  .modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .modal-spec { background: var(--stone); padding: 0.75rem; }
+  .modal-spec .lbl { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 0.25rem; }
+  .modal-spec .val { font-size: 0.9rem; font-weight: 500; }
+
+  footer { background: #111110; padding: 2rem 4rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+
+  @media(max-width:768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero-stats { gap: 2rem; }
+    .calc-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .tab-btn { padding: 0.65rem 1.4rem; font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">New <span>National</span> Marble</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#calculator">Get a Quote</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-texture"></div>
+  <div class="hero-strip">
+    <img src="ATICA_GREEN_GOLD.jpg" alt="">
+    <img src="WHITE_ROSE_GOLDEN.jpg" alt="">
+    <img src="OLMPIYA_GREEN.jpg" alt="">
+    <img src="MEDONA_GOLD.jpg" alt="">
+    <img src="MAVIK_AQUA_GOLD.jpeg" alt="">
+    <div class="hero-strip-fade"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Kolkata, India · Premium Stone Specialists</div>
+    <h1>Crafted from<br><em>Earth's Finest</em><br>Stone</h1>
+    <p class="hero-tagline">Marble · Granite · Floor Tiles · Wall Tiles</p>
+    <p class="hero-desc">Bringing nature's most exquisite materials to your floors and walls. Sourced from top quarries, finished with precision.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">Explore Collection</a>
+      <a href="#calculator" class="btn-outline">Get a Quote</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">500+</span><span class="lbl">Stone Varieties</span></div>
+    <div class="hero-stat"><span class="num">20+</span><span class="lbl">Years Experience</span></div>
+    <div class="hero-stat"><span class="num">5000+</span><span class="lbl">Projects Done</span></div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="products-header">
+    <p class="section-label">Our Collection</p>
+    <h2 class="section-title">Premium <em>Tiles & Stone</em></h2>
+    <p style="margin-top:0.75rem;color:var(--warm-gray);font-size:0.9rem;">Click any tile to view full details and enquire</p>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('floor',this)">&#9646; Floor Tiles · 48×24</button>
+    <button class="tab-btn" onclick="showTab('wall',this)">&#9646; Wall Tiles · 18×12</button>
+  </div>
+
+  <!-- FLOOR TILES -->
+  <div class="category-section active" id="tab-floor">
+    <p class="cat-label">V-Tiles Porselano &nbsp;·&nbsp; Size: <span>48 × 24 Inches</span> &nbsp;·&nbsp; Finish: <span>Polished / Glossy</span> &nbsp;·&nbsp; Thickness: <span>9mm</span></p>
+    <div class="floor-grid">
+
+      <div class="floor-card" onclick="openModal('ATICA_GREEN_GOLD.jpg','Atica Green Gold','V-TILES 48×24','48×24 Inches','Polished','9mm','Flooring, Feature Walls')">
+        <div class="img-wrap"><img src="ATICA_GREEN_GOLD.jpg" alt="Atica Green Gold"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">Atica Green Gold</p><p class="floor-size">48×24 · Polished · V-Tiles</p></div>
+          <span class="tile-badge">Bestseller</span>
+        </div>
+      </div>
+
+      <div class="floor-card" onclick="openModal('LESY_AQUA_GOLD.jpeg','Lesy Aqua Gold','V-TILE FORSELAND · 600×1200mm','600×1200 mm','Semi High Gloss','9mm','Flooring, Accent Walls')">
+        <div class="img-wrap"><img src="LESY_AQUA_GOLD.jpeg" alt="Lesy Aqua Gold"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">Lesy Aqua Gold</p><p class="floor-size">600×1200mm · Semi High Gloss · 9mm</p></div>
+          <span class="tile-badge">New</span>
+        </div>
+      </div>
+
+      <div class="floor-card" onclick="openModal('MAVIK_AQUA_GOLD.jpeg','Mavik Aqua Gold','V-TILE PORSELANO · 600×1200mm','600×1200 mm','Glossy','9mm','Flooring, Luxury Interiors')">
+        <div class="img-wrap"><img src="MAVIK_AQUA_GOLD.jpeg" alt="Mavik Aqua Gold"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">Mavik Aqua Gold</p><p class="floor-size">600×1200mm · Glossy · 9mm</p></div>
+          <span class="tile-badge">Premium</span>
+        </div>
+      </div>
+
+      <div class="floor-card" onclick="openModal('MEDONA_GOLD.jpg','Medona Gold','V-TILES 48×24','48×24 Inches','Polished','9mm','Flooring, Master Bedrooms')">
+        <div class="img-wrap"><img src="MEDONA_GOLD.jpg" alt="Medona Gold"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">Medona Gold</p><p class="floor-size">48×24 · Polished · V-Tiles</p></div>
+          <span class="tile-badge">Popular</span>
+        </div>
+      </div>
+
+      <div class="floor-card" onclick="openModal('OLMPIYA_GREEN.jpg','Olimpiya Green','V-TILES 48×24','48×24 Inches','Polished','9mm','Flooring, Feature Walls')">
+        <div class="img-wrap"><img src="OLMPIYA_GREEN.jpg" alt="Olimpiya Green"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">Olimpiya Green</p><p class="floor-size">48×24 · Polished · V-Tiles</p></div>
+          <span class="tile-badge">Trending</span>
+        </div>
+      </div>
+
+      <div class="floor-card" onclick="openModal('WHITE_ROSE_GOLDEN.jpg','White Rose Golden','V-TILES 48×24','48×24 Inches','Polished','9mm','Flooring, Lobby, Living Rooms')">
+        <div class="img-wrap"><img src="WHITE_ROSE_GOLDEN.jpg" alt="White Rose Golden"></div>
+        <div class="floor-info">
+          <div><p class="floor-name">White Rose Golden</p><p class="floor-size">48×24 · Polished · V-Tiles</p></div>
+          <span class="tile-badge">Luxury</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="enquire-strip">
+      <p>Looking for specific sizes, finishes, or bulk orders for residential and commercial projects?</p>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire About Floor Tiles</button>
+    </div>
+  </div>
+
+  <!-- WALL TILES -->
+  <div class="category-section" id="tab-wall">
+    <p class="cat-label">HL Series &nbsp;·&nbsp; Size: <span>18 × 12 Inches</span> &nbsp;·&nbsp; Surface: <span>Glazed / High Gloss</span> &nbsp;·&nbsp; Thickness: <span>7mm</span></p>
+    <div class="wall-grid">
+
+      <div class="wall-card" onclick="openModal('18008-HL-1.jpeg','Floral Leaves Grey','18008-HL-1','18×12 Inches','Glazed','7mm','Bathroom, Kitchen, Living Room Walls')">
+        <div class="img-wrap"><img src="18008-HL-1.jpeg" alt="18008 HL"></div>
+        <div class="wall-info">
+          <div><p class="wall-name">Floral Leaves Grey</p><p class="wall-code">18008-HL-1 · 18×12</p></div>
+          <span class="tile-badge dark">Classic</span>
+        </div>
+      </div>
+
+      <div class="wall-card" onclick="openModal('18031-HL-1.jpeg','Tropical Leaf Mix','18031-HL-1','18×12 Inches','Glazed','7mm','Bathroom, Kitchen Walls')">
+        <div class="img-wrap"><img src="18031-HL-1.jpeg" alt="18031 HL"></div>
+        <div class="wall-info">
+          <div><p class="wall-name">Tropical Leaf Mix</p><p class="wall-code">18031-HL-1 · 18×12</p></div>
+          <span class="tile-badge dark">Popular</span>
+        </div>
+      </div>
+
+      <div class="wall-card" onclick="openModal('18173-HL-1.jpeg','Butterfly Garden','18173-HL-1','18×12 Inches','Glazed','7mm','Living Room, Feature Walls')">
+        <div class="img-wrap"><img src="18173-HL-1.jpeg" alt="18173 HL"></div>
+        <div class="wall-info">
+          <div><p class="wall-name">Butterfly Garden</p><p class="wall-code">18173-HL-1 · 18×12</p></div>
+          <span class="tile-badge dark">Trendy</span>
+        </div>
+      </div>
+
+      <div class="wall-card" onclick="openModal('18359.jpeg','Marble Wave 3D','18359-HL-1','18×12 Inches','High Gloss','7mm','Bathroom, Kitchen, Accent Walls')">
+        <div class="img-wrap"><img src="18359.jpeg" alt="18359 HL"></div>
+        <div class="wall-info">
+          <div><p class="wall-name">Marble Wave 3D</p><p class="wall-code">18359-HL-1 · 18×12</p></div>
+          <span class="tile-badge">3D</span>
+        </div>
+      </div>
+
+      <div class="wall-card" onclick="openModal('18623-HL-1.jpeg','Bless Berry','18623-HL-1','18×12 Inches','Glazed','7mm','Kitchen, Bathroom, Living Walls')">
+        <div class="img-wrap"><img src="18623-HL-1.jpeg" alt="Bless Berry"></div>
+        <div class="wall-info">
+          <div><p class="wall-name">Bless Berry</p><p class="wall-code">18623-HL-1 · 18×12</p></div>
+          <span class="tile-badge dark">New</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="enquire-strip">
+      <p>Need samples or bulk pricing for wall tiles? Our team is ready to help with any project size.</p>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire About Wall Tiles</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CALCULATOR -->
+<section class="calculator" id="calculator">
+  <div style="max-width:1000px;margin:0 auto 4rem;">
+    <p class="section-label">Instant Estimate</p>
+    <h2 class="section-title">Quote <em>Calculator</em></h2>
+    <p style="margin-top:0.75rem;color:var(--warm-gray);font-size:0.9rem;">Get a quick estimate for your project. Final pricing subject to site measurement and material selection.</p>
+  </div>
+  <div class="calc-grid">
+    <div class="calc-form">
+      <div class="form-group">
+        <label class="form-label">Tile Category</label>
+        <select class="form-select" id="tileCategory" onchange="calcQuote()">
+          <option value="floor48">Floor Tiles 48×24 (V-Tiles)</option>
+          <option value="wall18">Wall Tiles 18×12 (HL Series)</option>
+          <option value="marble">Natural Marble Slab</option>
+          <option value="granite">Granite</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Grade / Quality</label>
+        <select class="form-select" id="grade" onchange="calcQuote()">
+          <option value="standard">Standard</option>
+          <option value="premium">Premium</option>
+          <option value="luxury">Luxury / Imported</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Application</label>
+        <select class="form-select" id="application" onchange="calcQuote()">
+          <option value="floor">Flooring</option>
+          <option value="wall">Wall Cladding</option>
+          <option value="counter">Countertop / Kitchen</option>
+          <option value="bathroom">Bathroom</option>
+          <option value="outdoor">Outdoor / Exterior</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Area (sq. ft)</label>
+        <div class="range-row" style="margin-top:0.25rem">
+          <input type="range" min="50" max="5000" value="500" step="50" id="areaRange" oninput="document.getElementById('areaVal').textContent=parseInt(this.value).toLocaleString('en-IN')+' sqft';calcQuote()">
+          <span class="range-val" id="areaVal">500 sqft</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Installation?</label>
+          <select class="form-select" id="installation" onchange="calcQuote()">
+            <option value="no">Not Required</option>
+            <option value="yes">Include It</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">City</label>
+          <select class="form-select" id="city" onchange="calcQuote()">
+            <option value="kolkata">Kolkata</option>
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-result">
+      <p class="quote-title">Your Estimate</p>
+      <div class="quote-line"><span class="lbl">Category</span><span class="val" id="q-cat">—</span></div>
+      <div class="quote-line"><span class="lbl">Grade</span><span class="val" id="q-grade">—</span></div>
+      <div class="quote-line"><span class="lbl">Application</span><span class="val" id="q-app">—</span></div>
+      <div class="quote-line"><span class="lbl">Area</span><span class="val" id="q-area">—</span></div>
+      <div class="quote-line"><span class="lbl">Material Cost</span><span class="val" id="q-matcost">—</span></div>
+      <div class="quote-line"><span class="lbl">Installation</span><span class="val" id="q-instcost">Not included</span></div>
+      <div class="quote-line"><span class="lbl">Wastage (10%)</span><span class="val" id="q-waste">—</span></div>
+      <div class="quote-total">
+        <span class="lbl">Estimated Total</span>
+        <span class="val" id="q-total">—</span>
+      </div>
+      <p class="quote-note">Approximate estimate only. Actual pricing depends on site conditions, material availability, and logistics. Contact us for a detailed formal quotation.</p>
+      <button class="btn-quote" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Formal Quote →</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div style="text-align:center;margin-bottom:1rem;">
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title">The New National <em>Difference</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></div>
+      <p class="why-name">Premium Sourcing</p>
+      <p class="why-desc">We source from top V-Tile factories and quarries across India and Europe — every piece is hand-selected for quality, finish, and consistency.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <p class="why-name">20+ Years Experience</p>
+      <p class="why-desc">Two decades serving architects, builders, and homeowners across Kolkata and beyond with expertise on every project.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+      <p class="why-name">Complete Service</p>
+      <p class="why-desc">From selection and cutting to delivery and installation — we manage every step, end to end, for both residential and commercial projects.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
+      <p class="why-name">Quality Guarantee</p>
+      <p class="why-desc">Every tile and slab is inspected for color, finish, and dimensional accuracy. We stand behind our materials with a full quality guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label" style="color:var(--gold)">Get in Touch</p>
+      <h2 class="section-title">Let's Build<br><em>Something Beautiful</em></h2>
+      <p class="contact-desc">Whether you're renovating a home or outfitting a commercial space, our team is ready to help you find the perfect tiles and stone.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-item-text"><strong>Showroom</strong>New National Marble, Kolkata, West Bengal, India</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="contact-item-text"><strong>Phone / WhatsApp</strong>+91 98300 00000</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-item-text"><strong>Email</strong>info@newnationalmarble.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <input type="text" placeholder="Your Name" class="contact-input" id="cName">
+      <input type="tel" placeholder="Phone / WhatsApp" class="contact-input" id="cPhone">
+      <input type="email" placeholder="Email Address" class="contact-input" id="cEmail">
+      <select class="contact-input" id="cInterest" style="color:rgba(255,255,255,0.4)">
+        <option value="" disabled selected>I'm interested in…</option>
+        <option value="floor">Floor Tiles 48×24</option>
+        <option value="wall">Wall Tiles 18×12</option>
+        <option value="marble">Natural Marble</option>
+        <option value="granite">Granite</option>
+        <option value="consultation">General Consultation</option>
+      </select>
+      <textarea placeholder="Tell us about your project…" class="contact-input" id="cMessage"></textarea>
+      <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="submitForm()">Send Enquiry</button>
+      <p id="formMsg" style="font-size:0.8rem;color:var(--gold-light);display:none;text-align:center;margin-top:0.5rem;"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">New <span>National</span> Marble</span>
+  <span class="footer-copy">© 2025 New National Marble. Premium Tiles & Stone, Kolkata, India.</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="productModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img src="" class="modal-img" id="modal-img" alt="">
+    <div class="modal-body">
+      <p class="modal-code" id="modal-code"></p>
+      <p class="modal-name" id="modal-name"></p>
+      <div class="modal-specs">
+        <div class="modal-spec"><p class="lbl">Size</p><p class="val" id="modal-size"></p></div>
+        <div class="modal-spec"><p class="lbl">Surface</p><p class="val" id="modal-surface"></p></div>
+        <div class="modal-spec"><p class="lbl">Thickness</p><p class="val" id="modal-thick"></p></div>
+        <div class="modal-spec"><p class="lbl">Best For</p><p class="val" id="modal-app"></p></div>
+      </div>
+      <button class="btn-primary" style="width:100%" onclick="closeModal();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire About This Tile</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.category-section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function openModal(img, name, code, size, surface, thick, app) {
+  document.getElementById('modal-img').src = img;
+  document.getElementById('modal-img').alt = name;
+  document.getElementById('modal-code').textContent = code;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-size').textContent = size;
+  document.getElementById('modal-surface').textContent = surface;
+  document.getElementById('modal-thick').textContent = thick;
+  document.getElementById('modal-app').textContent = app;
+  document.getElementById('productModal').classList.add('active');
+}
+function closeModal() { document.getElementById('productModal').classList.remove('active'); }
+
+const rates = { floor48:{standard:65,premium:110,luxury:180}, wall18:{standard:40,premium:70,luxury:120}, marble:{standard:90,premium:200,luxury:380}, granite:{standard:60,premium:110,luxury:200} };
+const appMult = { floor:1, wall:0.9, counter:1.2, bathroom:1.05, outdoor:0.85 };
+const cityMult = { kolkata:1, delhi:1.08, mumbai:1.12, bangalore:1.06, other:1.1 };
+const catLabels = { floor48:'Floor Tiles 48×24', wall18:'Wall Tiles 18×12', marble:'Natural Marble', granite:'Granite' };
+const appLabels = { floor:'Flooring', wall:'Wall Cladding', counter:'Countertop', bathroom:'Bathroom', outdoor:'Outdoor' };
+const gLabels = { standard:'Standard', premium:'Premium', luxury:'Luxury / Imported' };
+
+function calcQuote() {
+  const cat = document.getElementById('tileCategory').value;
+  const grade = document.getElementById('grade').value;
+  const app = document.getElementById('application').value;
+  const area = parseInt(document.getElementById('areaRange').value);
+  const inst = document.getElementById('installation').value;
+  const city = document.getElementById('city').value;
+  const rate = rates[cat][grade] * appMult[app] * cityMult[city];
+  const matCost = Math.round(area * rate);
+  const wastage = Math.round(matCost * 0.1);
+  const instCost = inst === 'yes' ? Math.round(area * 35 * cityMult[city]) : 0;
+  const total = matCost + wastage + instCost;
+  document.getElementById('q-cat').textContent = catLabels[cat];
+  document.getElementById('q-grade').textContent = gLabels[grade];
+  document.getElementById('q-app').textContent = appLabels[app];
+  document.getElementById('q-area').textContent = area.toLocaleString('en-IN') + ' sq ft';
+  document.getElementById('q-matcost').textContent = '₹' + matCost.toLocaleString('en-IN');
+  document.getElementById('q-instcost').textContent = inst === 'yes' ? '₹' + instCost.toLocaleString('en-IN') : 'Not included';
+  document.getElementById('q-waste').textContent = '₹' + wastage.toLocaleString('en-IN');
+  document.getElementById('q-total').textContent = '₹' + total.toLocaleString('en-IN');
+}
+
+function submitForm() {
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+  const msg = document.getElementById('formMsg');
+  msg.style.display = 'block';
+  msg.textContent = '✓ Thank you, ' + name + '! We\'ll reach out within 24 hours.';
+  ['cName','cPhone','cEmail','cMessage'].forEach(id => document.getElementById(id).value = '');
+}
+
+calcQuote();
+</script>
+</body>
+</html>
